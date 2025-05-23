@@ -41,7 +41,7 @@ Développeur passionné basé à Rouen, spécialisé en développement web full-
 ## 🔥 Projets Récents
 
 ### [Video Games Records](https://gitlab.com/video-games-records/default)
-Description courte de votre projet principal. Technologies utilisées : Vue.js, Symfony, API Platform
+Site web sur les records de jeux videos. Technologies utilisées : Vue.js, Symfony, API Platform
 - ⭐ API REST complète avec Symfony
 - ⭐ Interface utilisateur moderne avec Vue.js
 

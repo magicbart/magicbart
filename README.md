@@ -4,10 +4,10 @@
 
 Développeur passionné basé à Rouen, spécialisé en développement web full-stack avec Symfony et Vue.js. J'aime créer des solutions innovantes et contribuer à des projets open source.
 
-- 🔭 Je travaille actuellement sur **Video Games Records**
+- 🔭 Je travaille actuellement sur **[Video Games Records](https://www.videogamesrecords.net)**
 - 🌱 J'apprends actuellement **Typescript**
 - 📫 Comment me contacter : **[magicbart@gmail.com]**
-- ⚡ Fun fact : **Créateur et mainteneur de Video Games Records depuis 2004 - 20 ans à documenter les exploits gaming de la communauté !**
+- ⚡ Fun fact : **Créateur et mainteneur de [Video Games Records](https://www.videogamesrecords.net) depuis 2004 - 20 ans à documenter les exploits gaming de la communauté !**
 
 ## 🛠️ Technologies & Outils
 
@@ -38,9 +38,9 @@ Développeur passionné basé à Rouen, spécialisé en développement web full-
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=magicbart&layout=compact&theme=radical)
 
-## 🔥 Projets Récents
+## 🔥 Projets
 
-### [Video Games Records](https://gitlab.com/video-games-records/default)
+### [Video Games Records](https://github.com/video-games-records)
 Site web sur les records de jeux videos. Technologies utilisées : Vue.js, Symfony, API Platform
 - ⭐ API REST complète avec Symfony
 - ⭐ Interface utilisateur moderne avec Vue.js
@@ -55,15 +55,35 @@ Skeleton back : Symfony 7.2, Api Platform 4, Sonata Admin
 - ⭐ API REST
 - ⭐ Architecture moderne et maintenable  
 
+### [user-bundle](https://github.com/projet-normandie/user-bundle)
+Bundle Symfony pour la gestion des utilisateurs
+- ⭐ Gestion complète des utilisateurs
+- ⭐ Intégration avec Symfony
+
+### [message-bundle](https://github.com/projet-normandie/message-bundle)
+Bundle Symfony pour la messagerie
+- ⭐ Système de messagerie interne
+- ⭐ Interface d'administration
+
+### [forum-bundle](https://github.com/projet-normandie/forum-bundle)
+Bundle Symfony pour les forums
+- ⭐ Gestion de forums et discussions
+- ⭐ Modération et administration
+
+### [article-bundle](https://github.com/projet-normandie/article-bundle)
+Bundle Symfony pour la gestion d'articles
+- ⭐ Création et gestion d'articles
+- ⭐ Système de publication
+
 ## 📈 Contribution
 
 ![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=magicbart&theme=react-dark)
 
 ## 🎯 Objectifs 2025
 
-- [ ] Apprendre Flutter
-- [ ] Créer un projet personnel avec Flutter
-- [ ] Refonte de VGR en vue3 + shadcn + tailwind
+- [x] Apprendre Flutter
+- [x] Créer un projet personnel avec Flutter
+- [x] Refonte de VGR en vue3 + shadcn + tailwind
 
 
 ## 🤝 Restons en contact
@@ -72,9 +92,6 @@ Skeleton back : Symfony 7.2, Api Platform 4, Sonata Admin
 [![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/votre-handle)
 [![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=flat-square&logo=react&logoColor=white)](https://www.vgr-magicbart.com/)
 [![Email](https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:magicbart@gmail.com)
+[![Strava](https://img.shields.io/badge/-Strava-FC4C02?style=flat-square&logo=strava&logoColor=white)](https://www.strava.com/athletes/34324860)
 
----
 
-💡 *"Le code est comme l'humour. Quand il faut l'expliquer, c'est mauvais."* – Cory House
-
-![Visitors](https://visitor-badge.glitch.me/badge?page_id=magicbart.magicbart)

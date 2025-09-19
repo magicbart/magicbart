@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - David BENARD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Configuration pour impression A4 */
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            font-size: 11px;
+            background: white;
+        }
+
+        .container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 0;
+            background: white;
+        }
+
+        /* En-tête */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .header-left h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header-left .title {
+            font-size: 16px;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .header-right div {
+            margin-bottom: 3px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #bdc3c7;
+            letter-spacing: 0.5px;
+        }
+
+        /* Profil */
+        .profile-text {
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .skill-category {
+            margin-bottom: 8px;
+        }
+
+        .skill-category strong {
+            color: #2c3e50;
+            font-size: 11px;
+        }
+
+        .skill-list {
+            margin-top: 3px;
+            color: #555;
+            font-size: 10px;
+        }
+
+        /* Projets */
+        .project {
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .project-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 12px;
+        }
+
+        .project-year {
+            color: #7f8c8d;
+            font-size: 9px;
+            font-style: italic;
+        }
+
+        .project-description {
+            margin-bottom: 3px;
+            text-align: justify;
+        }
+
+        .project-tech {
+            color: #3498db;
+            font-size: 9px;
+            font-style: italic;
+        }
+
+        /* Formation & Expérience */
+        .experience-item {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .experience-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .experience-date {
+            color: #7f8c8d;
+            font-size: 9px;
+        }
+
+        .experience-company {
+            color: #3498db;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        /* Objectifs */
+        .objectives-list {
+            list-style: none;
+        }
+
+        .objectives-list li {
+            margin-bottom: 4px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .objectives-list li::before {
+            content: "→";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Layout en colonnes pour optimiser l'espace */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Styles d'impression */
+        @media print {
+            body {
+                font-size: 10px;
+            }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .project,
+            .experience-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Liens */
+        .link {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- En-tête -->
+    <header class="header">
+        <div class="header-left">
+            <h1>David BENARD</h1>
+            <div class="title">Développeur Symfony</div>
+        </div>
+        <div class="header-right">
+            <div>📧 magicbart@gmail.com</div>
+            <div>📱 XX XX XX XX XX</div>
+            <div>📍 Rouen, France</div>
+            <div>🌐 www.vgr-magicbart.com</div>
+            <div>💻 github.com/magicbart</div>
+        </div>
+    </header>
+
+    <!-- Profil professionnel -->
+    <section class="section">
+        <h2 class="section-title">Profil Professionnel</h2>
+        <p class="profile-text">
+            Développeur <span class="highlight">Symfony</span> passionné avec 20 ans d'expérience en développement web backend.
+            Spécialisé en architecture API REST et solutions scalables. Bonnes notions en Vue.js pour le frontend.
+            Ouvert au <strong>télétravail et flex office</strong>. Créateur de <strong>Video Games Records</strong> depuis 2004,
+            plateforme communautaire active. Utilisation d'outils IA comme <strong>Claude Code</strong> pour optimiser le développement.
+        </p>
+    </section>
+
+    <!-- Compétences techniques -->
+    <section class="section">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <strong>Backend (Expertise)</strong>
+                <div class="skill-list">PHP • Symfony • API Platform • Architecture REST • MySQL</div>
+            </div>
+            <div class="skill-category">
+                <strong>Frontend</strong>
+                <div class="skill-list">Vue.js • JavaScript • TypeScript • HTML5 • CSS3</div>
+            </div>
+            <div class="skill-category">
+                <strong>Outils & DevOps</strong>
+                <div class="skill-list">Git • Docker • PhpStorm • Linux • CI/CD</div>
+            </div>
+            <div class="skill-category">
+                <strong>Base de données</strong>
+                <div class="skill-list">MySQL • PostgreSQL • Redis</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expérience professionnelle -->
+    <section class="section">
+        <h2 class="section-title">Expérience Professionnelle</h2>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Développeur Full-Stack Senior</div>
+                <div class="experience-date">2004 - Présent</div>
+            </div>
+            <div class="experience-company">Video Games Records - Projet personnel</div>
+            <p>Création et maintenance d'une plateforme communautaire de records de jeux vidéos. Développement de l'API REST, interface utilisateur moderne, et gestion d'une base de données de plus de 100k entrées.</p>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Développeur en ESN & Clients finaux</div>
+                <div class="experience-date">2006 - 2025</div>
+            </div>
+            <div class="experience-company">Missions et postes en entreprise</div>
+            <p>Développement d'applications web pour Neuf Cegetel, Edifret, Experts Comptables, AvendreAlouer, Enedis, Coyote System, ERES et Webaxys. Expertise PHP/Symfony et intégration de solutions métier.</p>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Contributeur Open Source</div>
+                <div class="experience-date">2025 - Présent</div>
+            </div>
+            <div class="experience-company">Projets communautaires</div>
+            <p>Développement de templates et skeletons pour Symfony et Vue.js. Contribution active à l'écosystème open source avec des solutions modernes et maintenables.</p>
+        </div>
+    </section>
+
+    <!-- Projets principaux -->
+    <section class="section">
+        <h2 class="section-title">Projets Principaux</h2>
+
+        <div class="project">
+            <div class="project-header">
+                <div class="project-name">Video Games Records</div>
+                <div class="project-year">2004 - Présent</div>
+            </div>
+            <div class="project-description">
+                Plateforme web complète pour la gestion et le classement des records de jeux vidéos. API REST robuste,
+                interface utilisateur moderne et système de gestion communautaire avancé.
+            </div>
+            <div class="project-tech">Technologies : Vue.js, Symfony, API Platform, MySQL</div>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <div class="project-name">Symfony Skeleton</div>
+                <div class="project-year">2025</div>
+            </div>
+            <div class="project-description">
+                Template de base pour applications Symfony avec API Platform et bonnes pratiques.
+                Développé avec l'assistance de Claude Code pour l'optimisation du code.
+            </div>
+            <div class="project-tech">Technologies : Symfony 7.3, API Platform 4, Sonata Admin</div>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <div class="project-name">Templates Vue.js</div>
+                <div class="project-year">2025</div>
+            </div>
+            <div class="project-description">
+                Templates frontend modernes avec Vue3 et Tailwind CSS.
+            </div>
+            <div class="project-tech">Technologies : Vue3, TypeScript, Tailwind CSS</div>
+        </div>
+    </section>
+
+    <!-- Formation & Objectifs en deux colonnes -->
+    <div class="two-columns">
+        <section class="section">
+            <h2 class="section-title">Formation</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Maîtrise Informatique</div>
+                    <div class="experience-date">2004</div>
+                </div>
+                <div class="experience-company">Université de Rouen</div>
+                <p>Formation en informatique générale et développement logiciel.</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Formation Continue</div>
+                    <div class="experience-date">2004 - Présent</div>
+                </div>
+                <p>Spécialisation Symfony, veille technologique et pratique sur projets réels. Utilisation d'outils IA comme Claude Code.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Langues</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Français</div>
+                </div>
+                <p>Langue maternelle</p>
+            </div>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div class="experience-title">Anglais</div>
+                </div>
+                <p>Technique - Lecture de documentation</p>
+            </div>
+        </section>
+
+
+    </div>
+</div>
+</body>
+</html>

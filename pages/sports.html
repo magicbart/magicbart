@@ -1,0 +1,583 @@
+<style>
+    .sports-portfolio {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .sports-portfolio * {
+        box-sizing: border-box;
+    }
+
+    .sports-portfolio .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .sports-portfolio .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .sports-portfolio .header p {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .sports-portfolio .records-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .sports-portfolio .records-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+    }
+
+    .sports-portfolio .personal-records {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .sports-portfolio .record-card {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sports-portfolio .record-card:hover {
+        border-color: #ff6b6b;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+    }
+
+    .sports-portfolio .record-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .sports-portfolio .record-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .sports-portfolio .distance {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .sports-portfolio .time {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+    }
+
+    .sports-portfolio .race-info {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .sports-portfolio .years-section {
+        display: grid;
+        gap: 30px;
+    }
+
+    .sports-portfolio .year-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .sports-portfolio .year-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .sports-portfolio .year-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .sports-portfolio .year-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        flex-shrink: 0;
+    }
+
+    .sports-portfolio .year-title h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        color: #2c3e50;
+    }
+
+    .sports-portfolio .year-subtitle {
+        color: #666;
+        font-size: 1rem;
+        margin: 5px 0 0 0;
+    }
+
+    .sports-portfolio .races-grid {
+        display: grid;
+        gap: 20px;
+    }
+
+    .sports-portfolio .race-card {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .sports-portfolio .race-card:hover {
+        border-color: #ff6b6b;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+    }
+
+    .sports-portfolio .race-header {
+        margin-bottom: 15px;
+    }
+
+    .sports-portfolio .race-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+
+    .sports-portfolio .race-details {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .sports-portfolio .race-performance {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .sports-portfolio .perf-item {
+        text-align: center;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+    }
+
+    .sports-portfolio .perf-distance {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .sports-portfolio .perf-time {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #ff6b6b;
+    }
+
+    .sports-portfolio .stats-summary {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+    }
+
+    .sports-portfolio .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .sports-portfolio .stat-item {
+        text-align: center;
+    }
+
+    .sports-portfolio .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+    }
+
+    .sports-portfolio .stat-label {
+        color: #666;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .sports-portfolio {
+            padding: 15px;
+        }
+
+        .sports-portfolio .header h1 {
+            font-size: 2rem;
+        }
+
+        .sports-portfolio .personal-records {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sports-portfolio .year-card {
+            padding: 20px;
+        }
+
+        .sports-portfolio .year-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .sports-portfolio .year-title h3 {
+            font-size: 1.5rem;
+        }
+
+        .sports-portfolio .race-performance {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sports-portfolio .personal-records {
+            grid-template-columns: 1fr;
+        }
+
+        .sports-portfolio .race-performance {
+            grid-template-columns: 1fr;
+        }
+
+        .sports-portfolio .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+
+<div class="sports-portfolio">
+    <header class="header">
+        <h1>Mes Performances Sportives</h1>
+        <p>Coureur passionne depuis 2011 - Plus de 40 courses officielles</p>
+    </header>
+
+    <div class="records-section">
+        <h2>Records Personnels</h2>
+        <div class="personal-records">
+            <div class="record-card">
+                <div class="distance">10Km</div>
+                <div class="time">40:40</div>
+                <div class="race-info">10km de Rouen<br>08/10/2017</div>
+            </div>
+            <div class="record-card">
+                <div class="distance">Semi Marathon</div>
+                <div class="time">1:29:14</div>
+                <div class="race-info">Semi marathon de Paris<br>04/03/2018</div>
+            </div>
+            <div class="record-card">
+                <div class="distance">Marathon</div>
+                <div class="time">3:37:13</div>
+                <div class="race-info">Marathon de Rouen<br>15/09/2019</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="years-section">
+        <!-- 2025 -->
+        <div class="year-card">
+            <div class="year-header">
+                <div class="year-icon">2025</div>
+                <div class="year-title">
+                    <h3>2025</h3>
+                    <p class="year-subtitle">1 course</p>
+                </div>
+            </div>
+            <div class="races-grid">
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Les Boucles de Seine 2025</div>
+                        <div class="race-details">Mars 2025 - 302e sur 884</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">21.1Km</div>
+                            <div class="perf-time">1:43:23</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2019 -->
+        <div class="year-card">
+            <div class="year-header">
+                <div class="year-icon">2019</div>
+                <div class="year-title">
+                    <h3>2019</h3>
+                    <p class="year-subtitle">4 courses</p>
+                </div>
+            </div>
+            <div class="races-grid">
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Marathon de Rouen 2019</div>
+                        <div class="race-details">Septembre 2019 - 133e sur 663</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">42.2Km</div>
+                            <div class="perf-time">3:37:13</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Semi marathon de Bolbec 2019</div>
+                        <div class="race-details">Septembre 2019 - 189e sur 363</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">21.1Km</div>
+                            <div class="perf-time">1:49:50</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Radicatrail 14km 2019</div>
+                        <div class="race-details">Avril 2019 - 102e sur 486</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">14Km</div>
+                            <div class="perf-time">1:16:12</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Ecotrail 45km 2019</div>
+                        <div class="race-details">Mars 2019 - 922e sur 1639</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">Chaville</div>
+                            <div class="perf-time">2:50:49</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">St-Cloud</div>
+                            <div class="perf-time">4:12:29</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">Arrivee Paris</div>
+                            <div class="perf-time">5:38:53</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2018 -->
+        <div class="year-card">
+            <div class="year-header">
+                <div class="year-icon">2018</div>
+                <div class="year-title">
+                    <h3>2018</h3>
+                    <p class="year-subtitle">8 courses</p>
+                </div>
+            </div>
+            <div class="races-grid">
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Semi marathon de Paris 2018</div>
+                        <div class="race-details">Mars 2018 - 1674e sur 36514 - RECORD PERSONNEL</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">5Km</div>
+                            <div class="perf-time">21:08</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">10Km</div>
+                            <div class="perf-time">41:53</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">15Km</div>
+                            <div class="perf-time">1:03:23</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">20Km</div>
+                            <div class="perf-time">1:24:46</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">21.1Km</div>
+                            <div class="perf-time">1:29:14</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Marathon de Paris 2018</div>
+                        <div class="race-details">Avril 2018 - 16513e sur 42093</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">Semi</div>
+                            <div class="perf-time">1:44:05</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">30Km</div>
+                            <div class="perf-time">2:32:45</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">42.2Km</div>
+                            <div class="perf-time">4:06:37</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2017 -->
+        <div class="year-card">
+            <div class="year-header">
+                <div class="year-icon">2017</div>
+                <div class="year-title">
+                    <h3>2017</h3>
+                    <p class="year-subtitle">9 courses</p>
+                </div>
+            </div>
+            <div class="races-grid">
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">10Km de Rouen 2017</div>
+                        <div class="race-details">Octobre 2017 - 272e sur 2572 - RECORD PERSONNEL</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">10Km</div>
+                            <div class="perf-time">40:40</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="race-card">
+                    <div class="race-header">
+                        <div class="race-name">Marathon de Paris 2017</div>
+                        <div class="race-details">Avril 2017 - 10171e sur 42444</div>
+                    </div>
+                    <div class="race-performance">
+                        <div class="perf-item">
+                            <div class="perf-distance">Semi</div>
+                            <div class="perf-time">1:49:58</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">30Km</div>
+                            <div class="perf-time">2:38:03</div>
+                        </div>
+                        <div class="perf-item">
+                            <div class="perf-distance">42.2Km</div>
+                            <div class="perf-time">3:45:34</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-summary">
+        <h2>Statistiques Globales</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Annees de course</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Courses officielles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Marathons</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Semi-marathons</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1:29:14</div>
+                <div class="stat-label">Meilleur semi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3:37:13</div>
+                <div class="stat-label">Meilleur marathon</div>
+            </div>
+        </div>
+    </div>
+</div>

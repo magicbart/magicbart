@@ -1,0 +1,578 @@
+<style>
+    .tools-portfolio {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .tools-portfolio * {
+        box-sizing: border-box;
+    }
+
+    .tools-portfolio .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .tools-portfolio .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .tools-portfolio .header p {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .tools-portfolio .categories-grid {
+        display: grid;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .tools-portfolio .category-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .tools-portfolio .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .tools-portfolio .category-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        gap: 15px;
+    }
+
+    .tools-portfolio .category-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        flex-shrink: 0;
+    }
+
+    .tools-portfolio .dev-icon {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+
+    .tools-portfolio .design-icon {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+
+    .tools-portfolio .productivity-icon {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+    }
+
+    .tools-portfolio .infra-icon {
+        background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    }
+
+    .tools-portfolio .category-title {
+        flex: 1;
+    }
+
+    .tools-portfolio .category-title h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 5px 0;
+        color: #2c3e50;
+    }
+
+    .tools-portfolio .category-subtitle {
+        color: #666;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .tools-portfolio .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .tools-portfolio .tool-card {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tools-portfolio .tool-card:hover {
+        border-color: #27ae60;
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(39, 174, 96, 0.2);
+    }
+
+    .tools-portfolio .tool-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .tools-portfolio .tool-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .tools-portfolio .tool-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        gap: 12px;
+    }
+
+    .tools-portfolio .tool-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .tools-portfolio .tool-name {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin: 0;
+    }
+
+    .tools-portfolio .tool-description {
+        color: #555;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .tools-portfolio .tool-usage {
+        background: rgba(39, 174, 96, 0.1);
+        color: #27ae60;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .tools-portfolio .tool-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #27ae60;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: 2px solid #27ae60;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .tools-portfolio .tool-link:hover {
+        background: #27ae60;
+        color: white;
+        transform: translateX(3px);
+    }
+
+    .tools-portfolio .recommendation-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .tools-portfolio .recommendation-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #27ae60, #2ecc71);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .tools-portfolio .recommendation-text {
+        color: #555;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .tools-portfolio {
+            padding: 15px;
+        }
+
+        .tools-portfolio .header h1 {
+            font-size: 2rem;
+        }
+
+        .tools-portfolio .category-card {
+            padding: 25px;
+        }
+
+        .tools-portfolio .category-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .tools-portfolio .category-title h2 {
+            font-size: 1.5rem;
+        }
+
+        .tools-portfolio .tools-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="tools-portfolio">
+    <header class="header">
+        <h1>Mes Outils</h1>
+        <p>La boite a outils du developpeur moderne - Selection personnelle testee au quotidien</p>
+    </header>
+
+    <div class="categories-grid">
+        <!-- Développement -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon dev-icon">DEV</div>
+                <div class="category-title">
+                    <h2>Developpement</h2>
+                    <p class="category-subtitle">IDE, outils de code et debug</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">PS</div>
+                        <h3 class="tool-name">PhpStorm</h3>
+                    </div>
+                    <p class="tool-description">
+                        IDE de reference pour PHP/Symfony. Autocompletion parfaite, debugging integre,
+                        refactoring avance. Indispensable pour du code de qualite.
+                    </p>
+                    <span class="tool-usage">IDE principal</span>
+                    <a href="https://www.jetbrains.com/phpstorm/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">BR</div>
+                        <h3 class="tool-name">Bruno</h3>
+                    </div>
+                    <p class="tool-description">
+                        Client API leger et rapide. Alternative moderne a Postman, avec Git integration
+                        et interface plus fluide. Parfait pour tester les API REST.
+                    </p>
+                    <span class="tool-usage">Tests API</span>
+                    <a href="https://www.usebruno.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">DB</div>
+                        <h3 class="tool-name">DBeaver</h3>
+                    </div>
+                    <p class="tool-description">
+                        Client base de donnees universel. Support MySQL, PostgreSQL, Oracle...
+                        Interface claire, export facile, requetes SQL avancees.
+                    </p>
+                    <span class="tool-usage">Base de donnees</span>
+                    <a href="https://dbeaver.io/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">GIT</div>
+                        <h3 class="tool-name">Git</h3>
+                    </div>
+                    <p class="tool-description">
+                        Controle de version indispensable. Branches, merge, historique...
+                        La base de tout projet de developpement moderne.
+                    </p>
+                    <span class="tool-usage">Versionning</span>
+                    <a href="https://git-scm.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">GH</div>
+                        <h3 class="tool-name">GitHub</h3>
+                    </div>
+                    <p class="tool-description">
+                        Hebergement Git avec ecosysteme complet. Issues, Actions CI/CD,
+                        collaboration open source. Plateforme de reference pour mes projets publics.
+                    </p>
+                    <span class="tool-usage">Code hosting</span>
+                    <a href="https://github.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">GL</div>
+                        <h3 class="tool-name">GitLab</h3>
+                    </div>
+                    <p class="tool-description">
+                        Alternative robuste a GitHub avec CI/CD integre. Parfait pour les projets
+                        prives et les pipelines complexes. Interface complete et performante.
+                    </p>
+                    <span class="tool-usage">DevOps platform</span>
+                    <a href="https://gitlab.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infrastructure -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon infra-icon">INFRA</div>
+                <div class="category-title">
+                    <h2>Infrastructure</h2>
+                    <p class="category-subtitle">Containerisation et deploiement</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">DOC</div>
+                        <h3 class="tool-name">Docker</h3>
+                    </div>
+                    <p class="tool-description">
+                        Containerisation des applications. Environnements isoles, deploiements
+                        reproductibles, stack complete en quelques commandes.
+                    </p>
+                    <span class="tool-usage">Containerisation</span>
+                    <a href="https://www.docker.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">DR</div>
+                        <h3 class="tool-name">Drone CI</h3>
+                    </div>
+                    <p class="tool-description">
+                        Pipeline CI/CD leger et efficace. Integration Git, deploiement automatise,
+                        tests automatiques. Configuration simple en YAML.
+                    </p>
+                    <span class="tool-usage">CI/CD</span>
+                    <a href="https://www.drone.io/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">OVH</div>
+                        <h3 class="tool-name">OVH VPS</h3>
+                    </div>
+                    <p class="tool-description">
+                        Serveurs virtuels prives pour heberger mes projets. Rapport qualite/prix
+                        excellent, datacenters francais, support technique efficace.
+                    </p>
+                    <span class="tool-usage">Hebergement</span>
+                    <a href="https://www.ovhcloud.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productivité -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon productivity-icon">PROD</div>
+                <div class="category-title">
+                    <h2>Productivite</h2>
+                    <p class="category-subtitle">Organisation et communication</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">NO</div>
+                        <h3 class="tool-name">Notion</h3>
+                    </div>
+                    <p class="tool-description">
+                        Espace de travail tout-en-un. Documentation projets, prise de notes,
+                        planning, bases de donnees. Remplace 10 outils differents.
+                    </p>
+                    <span class="tool-usage">Documentation</span>
+                    <a href="https://www.notion.so/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">SL</div>
+                        <h3 class="tool-name">Slack</h3>
+                    </div>
+                    <p class="tool-description">
+                        Communication equipe en temps reel. Channels organises, integrations,
+                        partage de fichiers. Essential pour le travail collaboratif.
+                    </p>
+                    <span class="tool-usage">Communication</span>
+                    <a href="https://slack.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">FZ</div>
+                        <h3 class="tool-name">FileZilla</h3>
+                    </div>
+                    <p class="tool-description">
+                        Client FTP/SFTP fiable et gratuit. Interface intuitive, transferts rapides,
+                        gestion des sites. Pour les deployments et transferts de fichiers.
+                    </p>
+                    <span class="tool-usage">Transfert fichiers</span>
+                    <a href="https://filezilla-project.org/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design & Frontend -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon design-icon">UI</div>
+                <div class="category-title">
+                    <h2>Design & Frontend</h2>
+                    <p class="category-subtitle">Outils visuels et design</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">TW</div>
+                        <h3 class="tool-name">Tailwind CSS</h3>
+                    </div>
+                    <p class="tool-description">
+                        Framework CSS utility-first. Developpement rapide, design coherent,
+                        optimisation automatique. Fini le CSS sur mesure fastidieux.
+                    </p>
+                    <span class="tool-usage">Framework CSS</span>
+                    <a href="https://tailwindcss.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">SC</div>
+                        <h3 class="tool-name">Shadcn/ui</h3>
+                    </div>
+                    <p class="tool-description">
+                        Composants Vue.js pre-construits avec Tailwind. Design system moderne,
+                        composants accessibles, gain de temps enormes.
+                    </p>
+                    <span class="tool-usage">Composants UI</span>
+                    <a href="https://ui.shadcn.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">FI</div>
+                        <h3 class="tool-name">Figma</h3>
+                    </div>
+                    <p class="tool-description">
+                        Design collaboratif en ligne. Maquettes, prototypes, design systems.
+                        Perfect pour les specs visuelles et la communication avec les designers.
+                    </p>
+                    <span class="tool-usage">Design & Maquettes</span>
+                    <a href="https://www.figma.com/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intelligence Artificielle -->
+        <div class="category-card">
+            <div class="category-header">
+                <div class="category-icon ai-icon">IA</div>
+                <div class="category-title">
+                    <h2>Intelligence Artificielle</h2>
+                    <p class="category-subtitle">Assistant de developpement et productivite</p>
+                </div>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">CL</div>
+                        <h3 class="tool-name">Claude Code</h3>
+                    </div>
+                    <p class="tool-description">
+                        Assistant IA en ligne de commande pour le developpement. Delegation de taches
+                        de codage directement depuis le terminal. Accelere les taches repetitives.
+                    </p>
+                    <span class="tool-usage">Coding assistant</span>
+                    <a href="https://docs.anthropic.com/en/docs/claude-code" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-logo">AI</div>
+                        <h3 class="tool-name">Claude Web</h3>
+                    </div>
+                    <p class="tool-description">
+                        Assistant IA conversationnel pour brainstorming, documentation, architecture.
+                        Aide a la reflexion technique et a la resolution de problemes complexes.
+                    </p>
+                    <span class="tool-usage">Assistant general</span>
+                    <a href="https://claude.ai/" class="tool-link" target="_blank">Decouvrir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommendation-section">
+        <h2>Ma philosophie outils</h2>
+        <p class="recommendation-text">
+            Apres 20 ans de developpement, j'ai appris qu'un bon outil doit etre <strong>fiable</strong>,
+            <strong>rapide</strong> et <strong>ne pas faire obstacle a la creativite</strong>. Cette selection
+            represente mes choix actuels, testes quotidiennement sur mes projets. Chaque outil a sa place
+            dans mon workflow et contribue a la qualite finale du code livre.
+        </p>
+    </div>
+</div>

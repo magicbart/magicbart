@@ -1,0 +1,574 @@
+<style>
+    /* CSS scopé pour la page CV uniquement */
+    .cv-page-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cv-page-container * {
+        box-sizing: border-box;
+    }
+
+    .cv-wrapper {
+        max-width: 1000px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .cv-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4776e6 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+        position: relative;
+    }
+
+    .cv-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cvgrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23cvgrid)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .cv-header-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .cv-header h1 {
+        font-size: 2.5em;
+        margin: 0 0 10px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        font-weight: bold;
+    }
+
+    .cv-subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .cv-tech-badges {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .cv-tech-badge {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.2);
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+
+    .cv-content {
+        padding: 40px;
+    }
+
+    .cv-section {
+        margin-bottom: 40px;
+    }
+
+    .cv-section h2 {
+        color: #2a5298;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #4776e6;
+        position: relative;
+    }
+
+    .cv-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #1e3c72;
+    }
+
+    .cv-skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .cv-skill-item {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 4px solid #4776e6;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cv-skill-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .cv-skill-category {
+        font-weight: bold;
+        color: #2a5298;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        letter-spacing: 1px;
+    }
+
+    .cv-skill-content {
+        color: #555;
+    }
+
+    .cv-experience-item {
+        background: white;
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 25px;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cv-experience-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .cv-experience-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, #1e3c72, #4776e6);
+        border-radius: 2px;
+    }
+
+    .cv-experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .cv-experience-date {
+        background: linear-gradient(135deg, #1e3c72, #4776e6);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: 600;
+    }
+
+    .cv-company {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #2a5298;
+    }
+
+    .cv-position {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #4776e6;
+        margin: 10px 0;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .cv-tech-env {
+        background: #e3f2fd;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-size: 0.9em;
+        color: #1565c0;
+        border-left: 3px solid #2196f3;
+    }
+
+    .cv-achievements {
+        margin-top: 15px;
+    }
+
+    .cv-achievements ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .cv-achievements li {
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .cv-personal-project {
+        background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+        border: 2px solid #4caf50;
+    }
+
+    .cv-personal-project .cv-company {
+        color: #2e7d32;
+    }
+
+    .cv-personal-project .cv-tech-env {
+        background: #c8e6c9;
+        color: #1b5e20;
+        border-left-color: #4caf50;
+    }
+
+    .cv-education-item {
+        display: flex;
+        align-items: center;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+    }
+
+    .cv-education-item:hover {
+        transform: scale(1.02);
+    }
+
+    .cv-education-year {
+        background: #2a5298;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-right: 20px;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    .cv-education-content {
+        flex: 1;
+    }
+
+    .cv-education-title {
+        font-weight: bold;
+        color: #2a5298;
+        margin-bottom: 5px;
+    }
+
+    .cv-education-school {
+        color: #666;
+        font-style: italic;
+    }
+
+    .cv-interests {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .cv-interest-item {
+        background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        border: 2px solid #ff9800;
+    }
+
+    .cv-interest-category {
+        font-weight: bold;
+        color: #e65100;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    .cv-interest-content {
+        color: #bf360c;
+    }
+
+    @media (max-width: 768px) {
+        .cv-header h1 {
+            font-size: 2em;
+        }
+
+        .cv-experience-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cv-content {
+            padding: 20px;
+        }
+
+        .cv-skills-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="cv-page-container">
+    <div class="cv-wrapper">
+        <header class="cv-header">
+            <div class="cv-header-content">
+                <h1>Développeur WEB PHP</h1>
+                <p class="cv-subtitle">Certifié Zend Framework / PHP 5.3</p>
+                <div class="cv-tech-badges">
+                    <span class="cv-tech-badge">Symfony 7</span>
+                    <span class="cv-tech-badge">Vue.js</span>
+                    <span class="cv-tech-badge">API Platform</span>
+                    <span class="cv-tech-badge">Tailwind</span>
+                    <span class="cv-tech-badge">Docker</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="cv-content">
+            <section class="cv-section">
+                <h2>Compétences Techniques</h2>
+                <div class="cv-skills-grid">
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Framework</div>
+                        <div class="cv-skill-content">Symfony 7 + Api Platform, VueJs, Shadcn, Tailwind</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Langages</div>
+                        <div class="cv-skill-content">PHP, HTML, CSS, JavaScript, Java, XML, PlSql</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Versionning</div>
+                        <div class="cv-skill-content">GIT</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Systèmes</div>
+                        <div class="cv-skill-content">Windows, Ubuntu</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">SGBD</div>
+                        <div class="cv-skill-content">MySQL, Oracle, Sybase, SQL Server</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Logiciels</div>
+                        <div class="cv-skill-content">PhpStorm, FileZilla, Dbeaver, Docker, Drone Ci, Bruno</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2>Expériences Professionnelles</h2>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">09/23 - 06/25</span>
+                        <span class="cv-company">Webaxys</span>
+                    </div>
+                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> Symfony 6.4, Vue 3, MySQL
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Support fonctionnel et technique sur les applications web</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">11/21 - 08/23</span>
+                        <span class="cv-company">Eres</span>
+                    </div>
+                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> Symfony 5.4, React, MySQL
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Support fonctionnel et technique sur les applications web</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">01/18 - 10/21</span>
+                        <span class="cv-company">Powernext</span>
+                    </div>
+                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> MKframework, SqlServer, jQuery, PlSql
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Reprise de l'application Registre des Gos</li>
+                            <li>Support fonctionnel et technique</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">01/17 - 12/17</span>
+                        <span class="cv-company">Enedis</span>
+                    </div>
+                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> ZF1, ZF2, jQuery, SVN, Java, Struts, Oracle
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Reprise de l'application PPP (Java, Struts, Oracle)</li>
+                            <li>Support fonctionnel et technique sur les applications PHP</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">06/16 - 12/16</span>
+                        <span class="cv-company">Coyote System</span>
+                    </div>
+                    <div class="cv-position">Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> ZF1, jQuery, SVN, Compiere, Webservice REST, CMS
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>TMA sur les applications WEB, CRM, SAV, Webservices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">12/12 - 04/16</span>
+                        <span class="cv-company">ERDF</span>
+                    </div>
+                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> ZF1, ZF2, jQuery, SVN
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Reprise des applications ORFI, OS-PROV, Mercure au national</li>
+                            <li>Développement des évolutions et correction des anomalies</li>
+                            <li>Rédaction de documents techniques</li>
+                            <li>Développement application Escrime via ZF2 et modélisation BDD</li>
+                            <li>Responsable des mises en production</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">06/06 - 07/08</span>
+                        <span class="cv-company">Neuf Cegetel</span>
+                    </div>
+                    <div class="cv-position">Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> HTML, PHP4, Javascript, Java, Oracle, Perl, Unix, Tomcat, Axis, Eclipse, CVS, SVN, PlSql
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Développement d'application de gestion logistique complète</li>
+                            <li>Modélisation de la BDD et création de webservices</li>
+                            <li>Développement PHP accessible via navigateur</li>
+                            <li>Création de programmes Java/Perl/PlSql pour intégration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2>Expérience Personnelle</h2>
+
+                <div class="cv-experience-item cv-personal-project">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">06/04 - Présent</span>
+                        <span class="cv-company">Video Games Records</span>
+                    </div>
+                    <div class="cv-position">Webmaster & Lead Developer</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> Symfony 7, VueJs 3, MySQL, Apache, Ubuntu, Git
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Développement complet d'un site de records de jeux vidéos</li>
+                            <li>Architecture moderne : Symfony 6.4 + API Platform + VueJs 3</li>
+                            <li>Modélisation et optimisation de la base de données</li>
+                            <li>Administration de 2 VPS chez OVH</li>
+                            <li>Gestion complète du projet depuis 20 ans</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2>Formation</h2>
+
+                <div class="cv-education-item">
+                    <div class="cv-education-year">2004</div>
+                    <div class="cv-education-content">
+                        <div class="cv-education-title">Maîtrise Informatique Option Cryptographie</div>
+                        <div class="cv-education-school">Université de Rouen</div>
+                    </div>
+                </div>
+
+                <div class="cv-education-item">
+                    <div class="cv-education-year">2003</div>
+                    <div class="cv-education-content">
+                        <div class="cv-education-title">Licence Informatique</div>
+                        <div class="cv-education-school">Université de Rouen</div>
+                    </div>
+                </div>
+
+                <div class="cv-education-item">
+                    <div class="cv-education-year">2002</div>
+                    <div class="cv-education-content">
+                        <div class="cv-education-title">DEUG MIAS</div>
+                        <div class="cv-education-school">Université de Rouen</div>
+                    </div>
+                </div>
+
+                <div class="cv-education-item">
+                    <div class="cv-education-year">1999</div>
+                    <div class="cv-education-content">
+                        <div class="cv-education-title">BAC S, Option Mathématiques</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-section">
+                <h2>Loisirs</h2>
+                <div class="cv-interests">
+                    <div class="cv-interest-item">
+                        <div class="cv-interest-category">Sports</div>
+                        <div class="cv-interest-content">Vélo, football et course à pied</div>
+                    </div>
+                    <div class="cv-interest-item">
+                        <div class="cv-interest-category">Divers</div>
+                        <div class="cv-interest-content">Jeux vidéo, cinéma</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Téléchargement -->
+            <section class="cv-download-section">
+                <div class="cv-download-text">Télécharger la version PDF</div>
+                <a href="https://www.vgr-magicbart.com/wp-content/uploads/2025/09/CV-David-BENARD.pdf" class="cv-download-btn" target="_blank" rel="noopener noreferrer">
+                    Télécharger CV (PDF)
+                </a>
+            </section>
+        </div>
+    </div>
+</div>

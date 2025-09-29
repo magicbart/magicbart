@@ -1,0 +1,432 @@
+<style>
+    .contact-portfolio {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #4834d4 0%, #686de0 100%);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .contact-portfolio * {
+        box-sizing: border-box;
+    }
+
+    .contact-portfolio .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-portfolio .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #4834d4, #686de0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .contact-portfolio .header p {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .contact-portfolio .intro-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .contact-portfolio .intro-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #4834d4, #686de0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .contact-portfolio .intro-text {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-portfolio .platforms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .contact-portfolio .platform-category {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .contact-portfolio .platform-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-portfolio .category-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .contact-portfolio .category-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        margin: 0 auto 15px;
+    }
+
+    .contact-portfolio .dev-icon {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+    }
+
+    .contact-portfolio .sport-icon {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+
+    .contact-portfolio .social-icon {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+
+    .contact-portfolio .gaming-icon {
+        background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    }
+
+    .contact-portfolio .category-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin: 0;
+    }
+
+    .contact-portfolio .links-list {
+        display: grid;
+        gap: 15px;
+    }
+
+    .contact-portfolio .link-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #2c3e50;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-portfolio .link-item:hover {
+        border-color: #4834d4;
+        transform: translateX(5px);
+        box-shadow: 0 10px 20px rgba(72, 52, 212, 0.2);
+        color: #4834d4;
+    }
+
+    .contact-portfolio .link-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, #4834d4, #686de0);
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .contact-portfolio .link-item:hover::before {
+        transform: scaleY(1);
+    }
+
+    .contact-portfolio .link-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #4834d4, #686de0);
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .contact-portfolio .link-content {
+        flex: 1;
+    }
+
+    .contact-portfolio .link-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .contact-portfolio .link-description {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .contact-portfolio .contact-info {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-portfolio .contact-info h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #4834d4, #686de0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .contact-portfolio .email-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #4834d4;
+        text-decoration: none;
+        padding: 15px 30px;
+        border: 2px solid #4834d4;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+    .contact-portfolio .email-link:hover {
+        background: #4834d4;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(72, 52, 212, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-portfolio {
+            padding: 15px;
+        }
+
+        .contact-portfolio .header h1 {
+            font-size: 2rem;
+        }
+
+        .contact-portfolio .platforms-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-portfolio .platform-category {
+            padding: 20px;
+        }
+
+        .contact-portfolio .link-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .contact-portfolio .link-icon {
+            margin-right: 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contact-portfolio .intro-section,
+        .contact-portfolio .contact-info {
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="contact-portfolio">
+    <header class="header">
+        <h1>Ou me trouver</h1>
+        <p>Connectons-nous sur vos plateformes preferees</p>
+    </header>
+
+    <div class="intro-section">
+        <h2>Restons en contact !</h2>
+        <p class="intro-text">
+            Que ce soit pour discuter de developpement, partager une sortie running, echanger sur les jeux video
+            ou simplement pour dire bonjour, je suis present sur plusieurs plateformes.
+            N'hesitez pas a me contacter !
+        </p>
+    </div>
+
+    <div class="platforms-grid">
+        <!-- Développement -->
+        <div class="platform-category">
+            <div class="category-header">
+                <div class="category-icon dev-icon">DEV</div>
+                <h3 class="category-title">Developpement</h3>
+            </div>
+            <div class="links-list">
+                <a href="https://github.com/magicbart" class="link-item" target="_blank">
+                    <div class="link-icon">GH</div>
+                    <div class="link-content">
+                        <div class="link-name">GitHub</div>
+                        <div class="link-description">Mes projets open source et contributions</div>
+                    </div>
+                </a>
+                <a href="https://packagist.org/users/magicbart/packages/" class="link-item" target="_blank">
+                    <div class="link-icon">PK</div>
+                    <div class="link-content">
+                        <div class="link-name">Packagist</div>
+                        <div class="link-description">Mes packages et bundles Symfony</div>
+                    </div>
+                </a>
+                <a href="http://www.linkedin.com/pub/david-benard/28/818/625" class="link-item" target="_blank">
+                    <div class="link-icon">LI</div>
+                    <div class="link-content">
+                        <div class="link-name">LinkedIn</div>
+                        <div class="link-description">Profil professionnel et reseau</div>
+                    </div>
+                </a>
+                <a href="https://www.malt.fr/profile/davidbenard" class="link-item" target="_blank">
+                    <div class="link-icon">MA</div>
+                    <div class="link-content">
+                        <div class="link-name">Malt</div>
+                        <div class="link-description">Profil freelance et missions</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sport -->
+        <div class="platform-category">
+            <div class="category-header">
+                <div class="category-icon sport-icon">RUN</div>
+                <h3 class="category-title">Course a pied</h3>
+            </div>
+            <div class="links-list">
+                <a href="https://www.strava.com/athletes/34324860" class="link-item" target="_blank">
+                    <div class="link-icon">ST</div>
+                    <div class="link-content">
+                        <div class="link-name">Strava</div>
+                        <div class="link-description">Mes entrainements et sorties running</div>
+                    </div>
+                </a>
+                <a href="https://connect.garmin.com/modern/profile/magicbart" class="link-item" target="_blank">
+                    <div class="link-icon">GA</div>
+                    <div class="link-content">
+                        <div class="link-name">Garmin Connect</div>
+                        <div class="link-description">Donnees detaillees de mes performances</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Social -->
+        <div class="platform-category">
+            <div class="category-header">
+                <div class="category-icon social-icon">SOC</div>
+                <h3 class="category-title">Reseaux sociaux</h3>
+            </div>
+            <div class="links-list">
+                <a href="http://twitter.com/#!/magicbart" class="link-item" target="_blank">
+                    <div class="link-icon">X</div>
+                    <div class="link-content">
+                        <div class="link-name">Twitter</div>
+                        <div class="link-description">Actualites tech et reflexions</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/magicbart/" class="link-item" target="_blank">
+                    <div class="link-icon">IG</div>
+                    <div class="link-content">
+                        <div class="link-name">Instagram</div>
+                        <div class="link-description">Photos running et moments de vie</div>
+                    </div>
+                </a>
+                <a href="http://www.youtube.com/VGRmagicbart" class="link-item" target="_blank">
+                    <div class="link-icon">YT</div>
+                    <div class="link-content">
+                        <div class="link-name">YouTube</div>
+                        <div class="link-description">Videos et contenus VGR</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Gaming -->
+        <div class="platform-category">
+            <div class="category-header">
+                <div class="category-icon gaming-icon">GAM</div>
+                <h3 class="category-title">Gaming</h3>
+            </div>
+            <div class="links-list">
+                <a href="https://www.twitch.tv/videogamesrecords/" class="link-item" target="_blank">
+                    <div class="link-icon">TW</div>
+                    <div class="link-content">
+                        <div class="link-name">Twitch</div>
+                        <div class="link-description">Chaine Video Games Records</div>
+                    </div>
+                </a>
+                <a href="https://steamcommunity.com/id/VGRmagicbart/" class="link-item" target="_blank">
+                    <div class="link-icon">ST</div>
+                    <div class="link-content">
+                        <div class="link-name">Steam</div>
+                        <div class="link-description">Profil gaming PC et bibliotheque</div>
+                    </div>
+                </a>
+                <a href="http://live.xbox.com/fr-FR/MyXbox/Profile?amp;pp=0&GamerTag=VGR+magicbart" class="link-item" target="_blank">
+                    <div class="link-icon">XB</div>
+                    <div class="link-content">
+                        <div class="link-name">Xbox Live</div>
+                        <div class="link-description">Profil gaming et achievements</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <h2>Contact direct</h2>
+        <p>Pour toute demande professionnelle ou collaboration :</p>
+        <a href="mailto:david.benard@vgr-magicbart.com" class="email-link">
+            <span>@</span>
+            david.benard@vgr-magicbart.com
+        </a>
+    </div>
+</div>

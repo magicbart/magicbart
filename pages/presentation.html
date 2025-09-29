@@ -1,0 +1,395 @@
+<style>
+    .presentation-portfolio {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .presentation-portfolio * {
+        box-sizing: border-box;
+    }
+
+    .presentation-portfolio .hero-section {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 60px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .presentation-portfolio .profile-image {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        margin: 0 auto 30px;
+        border: 5px solid #2c3e50;
+        box-shadow: 0 15px 30px rgba(44, 62, 80, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .presentation-portfolio .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(44, 62, 80, 0.4);
+    }
+
+    .presentation-portfolio .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .presentation-portfolio .hero-subtitle {
+        font-size: 1.3rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .presentation-portfolio .hero-description {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    .presentation-portfolio .timeline {
+        position: relative;
+        margin: 40px 0;
+    }
+
+    .presentation-portfolio .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        transform: translateX(-50%);
+    }
+
+    .presentation-portfolio .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+        width: 45%;
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(even) {
+        left: 55%;
+        text-align: left;
+    }
+
+    .presentation-portfolio .timeline-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .presentation-portfolio .timeline-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(odd) .timeline-card::after {
+        content: '';
+        position: absolute;
+        right: -15px;
+        top: 30px;
+        width: 0;
+        height: 0;
+        border-left: 15px solid rgba(255, 255, 255, 0.95);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(even) .timeline-card::after {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 30px;
+        width: 0;
+        height: 0;
+        border-right: 15px solid rgba(255, 255, 255, 0.95);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+
+    .presentation-portfolio .timeline-dot {
+        position: absolute;
+        top: 30px;
+        width: 20px;
+        height: 20px;
+        background: #2c3e50;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(odd) .timeline-dot {
+        right: -65px;
+    }
+
+    .presentation-portfolio .timeline-item:nth-child(even) .timeline-dot {
+        left: -65px;
+    }
+
+    .presentation-portfolio .timeline-year {
+        display: inline-block;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .presentation-portfolio .timeline-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
+
+    .presentation-portfolio .timeline-content {
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .presentation-portfolio .timeline-link {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .presentation-portfolio .timeline-link:hover {
+        border-bottom-color: #2c3e50;
+    }
+
+    .presentation-portfolio .values-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .presentation-portfolio .values-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .presentation-portfolio .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .presentation-portfolio .value-item {
+        text-align: center;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .presentation-portfolio .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(44, 62, 80, 0.1);
+    }
+
+    .presentation-portfolio .value-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        margin: 0 auto 20px;
+    }
+
+    .presentation-portfolio .value-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .presentation-portfolio .value-description {
+        color: #666;
+        font-size: 0.95rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .presentation-portfolio {
+            padding: 15px;
+        }
+
+        .presentation-portfolio .hero-title {
+            font-size: 2rem;
+        }
+
+        .presentation-portfolio .timeline::before {
+            left: 20px;
+        }
+
+        .presentation-portfolio .timeline-item {
+            width: calc(100% - 50px);
+            left: 50px !important;
+            text-align: left !important;
+        }
+
+        .presentation-portfolio .timeline-item .timeline-card::after {
+            display: none;
+        }
+
+        .presentation-portfolio .timeline-dot {
+            left: -40px !important;
+            right: auto !important;
+        }
+
+        .presentation-portfolio .values-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .presentation-portfolio .hero-section {
+            padding: 40px 15px;
+        }
+
+        .presentation-portfolio .profile-image {
+            width: 150px;
+            height: 150px;
+        }
+    }
+</style>
+
+<div class="presentation-portfolio">
+    <div class="hero-section">
+        <img src="http://www.vgr-magicbart.com/wp-content/uploads/2018/06/magicbart_manga.jpg" alt="David BENARD" class="profile-image">
+        <h1 class="hero-title">David BENARD</h1>
+        <p class="hero-subtitle">Developpeur Full-Stack passionne</p>
+        <p class="hero-description">
+            Passionne par le developpement web depuis plus de 20 ans, je combine expertise technique et
+            vision produit pour creer des solutions innovantes. Mon parcours m'a mene de l'enseignement
+            des mathematiques au developpement web, avec une constante : l'envie de partager et d'apprendre.
+        </p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-card">
+                <span class="timeline-year">Debut 2000</span>
+                <h3 class="timeline-title">Formation universitaire</h3>
+                <p class="timeline-content">
+                    Formation pour devenir professeur de mathematiques. Decouverte de la programmation
+                    qui va changer le cours de ma carriere. Cette periode m'a apporte la rigueur
+                    et la logique necessaires au developpement.
+                </p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-card">
+                <span class="timeline-year">2004</span>
+                <h3 class="timeline-title">Creation de Video Games Records</h3>
+                <p class="timeline-content">
+                    Lancement du site <a href="https://www.video-games-records.com" target="_blank" class="timeline-link">Video Games Records</a>.
+                    Cette aventure me permet de nouer des liens forts avec une communaute de joueurs passionnes.
+                    Certains rejoindront l'equipe pour m'aider a developper le site, cree une vraie dynamique collaborative.
+                </p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-card">
+                <span class="timeline-year">2006-2017</span>
+                <h3 class="timeline-title">Carriere parisienne</h3>
+                <p class="timeline-content">
+                    11 annees d'experience a Paris, montee en competences sur diverses missions pour des
+                    grands comptes comme Enedis. Cette periode m'a permis d'acquerir une solide expertise
+                    technique et une vision business des projets informatiques.
+                </p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-card">
+                <span class="timeline-year">2018-Aujourd'hui</span>
+                <h3 class="timeline-title">Retour en Normandie</h3>
+                <p class="timeline-content">
+                    Retour aux sources en Normandie pour mettre mon bagage technique au service d'entreprises
+                    locales. La vie en province offre un meilleur equilibre et permet de s'investir pleinement
+                    dans des projets passionnants tout en gardant une qualite de vie.
+                </p>
+            </div>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="values-section">
+        <h2>Mes valeurs</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">TECH</div>
+                <h3 class="value-title">Innovation</h3>
+                <p class="value-description">Toujours a l'affut des nouvelles technologies pour apporter les meilleures solutions</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">TEAM</div>
+                <h3 class="value-title">Collaboration</h3>
+                <p class="value-description">Le travail d'equipe et le partage de connaissances sont au coeur de ma demarche</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">QUAL</div>
+                <h3 class="value-title">Qualite</h3>
+                <p class="value-description">Code propre, architecture solide et bonnes pratiques pour des projets perennes</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">PASS</div>
+                <h3 class="value-title">Passion</h3>
+                <p class="value-description">20 ans apres, l'envie d'apprendre et de creer reste intacte</p>
+            </div>
+        </div>
+    </div>
+</div>

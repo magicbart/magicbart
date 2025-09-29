@@ -1,0 +1,452 @@
+<style>
+    .projets-portfolio {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        border-radius: 20px;
+    }
+
+    .projets-portfolio * {
+        box-sizing: border-box;
+    }
+
+    .projets-portfolio .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .projets-portfolio .header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .projets-portfolio .header p {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 0;
+    }
+
+    .projets-portfolio .projects-grid {
+        display: grid;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .projets-portfolio .project-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .projets-portfolio .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .projets-portfolio .project-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .projets-portfolio .project-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        flex-shrink: 0;
+    }
+
+    .projets-portfolio .vgr-icon {
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    }
+
+    .projets-portfolio .normandie-icon {
+        background: linear-gradient(135deg, #4834d4, #686de0);
+    }
+
+    .projets-portfolio .project-title {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .projets-portfolio .project-title h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 5px 0;
+        color: #2c3e50;
+    }
+
+    .projets-portfolio .project-subtitle {
+        color: #666;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .projets-portfolio .project-description {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 30px;
+        line-height: 1.7;
+    }
+
+    .projets-portfolio .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .projets-portfolio .tech-tag {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .projets-portfolio .repositories {
+        margin-top: 25px;
+    }
+
+    .projets-portfolio .repositories h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .projets-portfolio .repo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .projets-portfolio .repo-card {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px solid #e9ecef;
+        border-radius: 15px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .projets-portfolio .repo-card:hover {
+        border-color: #667eea;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+    }
+
+    .projets-portfolio .repo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    .projets-portfolio .repo-card:hover::before {
+        transform: scaleX(1);
+    }
+
+    .projets-portfolio .repo-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        gap: 12px;
+    }
+
+    .projets-portfolio .repo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .projets-portfolio .repo-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #2c3e50;
+        margin: 0;
+    }
+
+    .projets-portfolio .repo-description {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .projets-portfolio .repo-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border: 2px solid #667eea;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .projets-portfolio .repo-link:hover {
+        background: #667eea;
+        color: white;
+        transform: translateX(5px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .projets-portfolio {
+            padding: 15px;
+        }
+
+        .projets-portfolio .header h1 {
+            font-size: 2rem;
+        }
+
+        .projets-portfolio .project-card {
+            padding: 25px;
+        }
+
+        .projets-portfolio .project-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .projets-portfolio .project-title h2 {
+            font-size: 1.5rem;
+        }
+
+        .projets-portfolio .repo-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .projets-portfolio .tech-stack {
+            justify-content: center;
+        }
+    }
+</style>
+
+<div class="projets-portfolio">
+    <header class="header">
+        <h1>Mes Projets</h1>
+        <p>Developpeur Full-Stack passionne | Symfony - Vue.js - TypeScript</p>
+    </header>
+
+    <div class="projects-grid">
+        <!-- Video Games Records -->
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-icon vgr-icon">VGR</div>
+                <div class="project-title">
+                    <h2>Video Games Records</h2>
+                    <p class="project-subtitle">Depuis 2004 - 20 ans de passion gaming</p>
+                </div>
+            </div>
+
+            <p class="project-description">
+                Plateforme communautaire dediee aux records de jeux video. Un projet que je maintiens depuis plus de 20 ans,
+                devenu une reference pour documenter et partager les exploits gaming de la communaute francophone.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-tag">Symfony 7.2</span>
+                <span class="tech-tag">Vue.js 3</span>
+                <span class="tech-tag">API Platform</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+
+            <div class="repositories">
+                <h3>Repositories</h3>
+                <div class="repo-grid">
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">WEB</div>
+                            <h4 class="repo-name">website</h4>
+                        </div>
+                        <p class="repo-description">Interface utilisateur principale du site, developpee avec Vue.js 3 et une architecture moderne.</p>
+                        <a href="https://github.com/video-games-records/website" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">ADM</div>
+                            <h4 class="repo-name">backoffice</h4>
+                        </div>
+                        <p class="repo-description">Interface d'administration complete pour la gestion des contenus et des utilisateurs.</p>
+                        <a href="https://github.com/video-games-records/backoffice" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">COR</div>
+                            <h4 class="repo-name">core-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle Symfony contenant la logique metier centrale et les entites principales.</p>
+                        <a href="https://github.com/video-games-records/core-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">DWH</div>
+                            <h4 class="repo-name">dwh-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle dedie au data warehouse et aux analyses statistiques avancees.</p>
+                        <a href="https://github.com/video-games-records/dwh-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projet Normandie -->
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-icon normandie-icon">PN</div>
+                <div class="project-title">
+                    <h2>Projet Normandie</h2>
+                    <p class="project-subtitle">Ecosysteme de developpement moderne</p>
+                </div>
+            </div>
+
+            <p class="project-description">
+                Suite d'outils et de templates pour accelerer le developpement d'applications web modernes.
+                Un ecosysteme complet avec des skeletons frontend/backend et des bundles reutilisables.
+            </p>
+
+            <div class="tech-stack">
+                <span class="tech-tag">Symfony 7.2</span>
+                <span class="tech-tag">Vue.js 3</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Shadcn/ui</span>
+            </div>
+
+            <div class="repositories">
+                <h3>Repositories</h3>
+                <div class="repo-grid">
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">SYM</div>
+                            <h4 class="repo-name">symfony-skeleton</h4>
+                        </div>
+                        <p class="repo-description">Template backend avec Symfony 7.2, API Platform et Sonata Admin pour demarrer rapidement.</p>
+                        <a href="https://github.com/projet-normandie/symfony-skeleton" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">VUE</div>
+                            <h4 class="repo-name">vue-shadcn-template</h4>
+                        </div>
+                        <p class="repo-description">Template frontend moderne avec Vue 3, TypeScript, Tailwind CSS et Shadcn/ui.</p>
+                        <a href="https://github.com/projet-normandie/vue-shadcn-template" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">USR</div>
+                            <h4 class="repo-name">user-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle Symfony pour la gestion complete des utilisateurs et de l'authentification.</p>
+                        <a href="https://github.com/projet-normandie/user-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">ART</div>
+                            <h4 class="repo-name">article-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle pour la gestion d'articles et de contenus editoriaux avec systeme de publication.</p>
+                        <a href="https://github.com/projet-normandie/article-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">FOR</div>
+                            <h4 class="repo-name">forum-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle forum complet avec systeme de topics, moderation et gestion des permissions.</p>
+                        <a href="https://github.com/projet-normandie/forum-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+
+                    <div class="repo-card">
+                        <div class="repo-header">
+                            <div class="repo-icon">MSG</div>
+                            <h4 class="repo-name">message-bundle</h4>
+                        </div>
+                        <p class="repo-description">Bundle de messagerie privee avec notifications et gestion des conversations.</p>
+                        <a href="https://github.com/projet-normandie/message-bundle" class="repo-link" target="_blank">
+                            Voir le code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

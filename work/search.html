@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique de Recherche d'Emploi - David BENARD</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .filters {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .filter-group {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .filter-group label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .filter-group select, .filter-group input {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        th {
+            background-color: #343a40;
+            color: white;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            border-right: 1px solid #495057;
+        }
+        th:last-child {
+            border-right: none;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #dee2e6;
+            border-right: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+        td:last-child {
+            border-right: none;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .status.waiting { background-color: #fff3cd; color: #856404; }
+        .status.closed { background-color: #f8d7da; color: #721c24; }
+        .status.in-progress { background-color: #d4edda; color: #155724; }
+        .status.todo { background-color: #cce7ff; color: #004085; }
+        .company-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+        .company-link:hover {
+            text-decoration: underline;
+        }
+        .type-badge {
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .type-esn { background-color: #e3f2fd; color: #1976d2; }
+        .type-agency { background-color: #f3e5f5; color: #7b1fa2; }
+        .interactions {
+            margin-top: 5px;
+        }
+        .interaction {
+            background-color: #f8f9fa;
+            border-left: 3px solid #667eea;
+            padding: 5px 8px;
+            margin: 3px 0;
+            font-size: 0.9em;
+            border-radius: 3px;
+        }
+        .interaction-date {
+            font-weight: bold;
+            color: #495057;
+            margin-right: 8px;
+        }
+        .add-new {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .add-new:hover {
+            background-color: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        .origin-badge {
+            background-color: #e9ecef;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            color: #495057;
+            font-weight: 500;
+        }
+        .origin-indeed { background-color: #e8f4fd; color: #2557a7; }
+        .origin-linkedin { background-color: #e3f2fd; color: #0077b5; }
+        .origin-apec { background-color: #fff3cd; color: #856404; }
+        .origin-pole-emploi { background-color: #d4edda; color: #155724; }
+        .origin-hello-works { background-color: #f3e5f5; color: #7b1fa2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Historique de Recherche d'Emploi</h1>
+            <p>Suivi des candidatures et opportunités professionnelles par entreprise</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total Entreprises</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Fermées</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">En Cours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Todo</div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="statusFilter">Statut:</label>
+                <select id="statusFilter">
+                    <option value="">Tous</option>
+                    <option value="WAITING">En attente</option>
+                    <option value="CLOSED">Fermé</option>
+                    <option value="IN PROGRESS">En cours</option>
+                    <option value="TODO">À faire</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="typeFilter">Type:</label>
+                <select id="typeFilter">
+                    <option value="">Tous</option>
+                    <option value="ESN">ESN</option>
+                    <option value="Agence Web">Agence Web</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="originFilter">Origine:</label>
+                <select id="originFilter">
+                    <option value="">Toutes</option>
+                    <option value="Indeed">Indeed</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="APEC">APEC</option>
+                    <option value="France Travail">France Travail</option>
+                    <option value="Hello Works">Hello Works</option>
+                    <option value="Spontanée">Spontanée</option>
+                </select>
+            </div>
+        </div>
+        
+        <table id="jobTable">
+            <thead>
+                <tr>
+                    <th>Entreprise & Type</th>
+                    <th>Origine</th>
+                    <th>Ville</th>
+                    <th>Interactions & Historique</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-company="Proxiad Axe Seine">
+                    <td>
+                        <a href="#" class="company-link">Proxiad Axe Seine</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-linkedin">LinkedIn</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-04-01</span>
+                                Candidature initiale
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-08-06</span>
+                                Envoi candidature via LinkedIn
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-11</span>
+                                Rencontre salon France Travail
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Relance par email
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status in-progress">IN PROGRESS</span></td>
+                </tr>
+                
+                <tr data-company="Magina">
+                    <td>
+                        <a href="#" class="company-link">Magina</a>
+                        <br><span class="type-badge type-agency">Agence Web</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-apec">APEC</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-04-01</span>
+                                Candidature via APEC
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-04-10</span>
+                                Entretien sur place
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+                
+                <tr data-company="Groupe Digit">
+                    <td>
+                        <a href="#" class="company-link">Groupe Digit</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-04-04</span>
+                                Candidature initiale
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-04-15</span>
+                                Entretien RH
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+                
+                <tr data-company="Attineos">
+                    <td>
+                        <a href="#" class="company-link">Attineos</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-05-25</span>
+                                Prise de contact
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="FTEL">
+                    <td>
+                        <a href="#" class="company-link">FTEL</a>
+                        <br><span class="type-badge type-agency">Agence Web</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-07</span>
+                                Envoi candidature spontanée
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-07</span>
+                                Réponse négative
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+                
+                <tr data-company="Extia">
+                    <td>
+                        <a href="#" class="company-link">Extia</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-07</span>
+                                Candidature spontanée
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-14</span>
+                                Entretien téléphonique
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+
+                <tr data-company="Momenti">
+                    <td>
+                        <a href="#" class="company-link">Momenti</a>
+                        <br><span class="type-badge type-agency">Cabinet de recrutement</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-07</span>
+                                Prise de contact
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+                
+                <tr data-company="AZURHEA">
+                    <td>
+                        <a href="#" class="company-link">AZURHEA</a>
+                        <br><span class="type-badge type-esn">Entreprise</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-apec">APEC</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-08</span>
+                                Envoi candidature via APEC
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status in-progress">IN PROGRESS</span></td>
+                </tr>
+                
+                <tr data-company="Matmut">
+                    <td>
+                        <a href="#" class="company-link">Matmut</a>
+                        <br><span class="type-badge type-esn">Entreprise</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-linkedin">LinkedIn</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-15</span>
+                                Envoi candidature sur leur site
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-11</span>
+                                Relance sur le salon de l'emploi
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+                
+                <tr data-company="SSII groupe">
+                    <td>
+                        <a href="#" class="company-link">SSII groupe</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-07-20</span>
+                                Envoi candidature spontanée
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status in-progress">IN PROGRESS</span></td>
+                </tr>
+                
+                <tr data-company="ADN informatique">
+                    <td>
+                        <a href="#" class="company-link">ADN informatique</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-pole-emploi">France Travail</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-08</span>
+                                Envoi candidature spontanée via France Travail
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status in-progress">IN PROGRESS</span></td>
+                </tr>
+                
+                <tr data-company="Oasis Projet">
+                    <td>
+                        <a href="#" class="company-link">Oasis Projet</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-pole-emploi">France Travail</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-08</span>
+                                Candidature spontanée
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="Redlab">
+                    <td>
+                        <a href="#" class="company-link">Redlab</a>
+                        <br><span class="type-badge type-agency">Agence Web</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-08</span>
+                                Candidature spontanée
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="Maten">
+                    <td>
+                        <a href="#" class="company-link">Maten</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-hello-works">Hello Works</span>
+                    </td>
+                    <td>Amiens</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-09-29</span>
+                                Candidature via Hello Works
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status closed">CLOSED</span></td>
+                </tr>
+
+                <tr data-company="AquisIT">
+                    <td>
+                        <a href="#" class="company-link">AquisIT</a>
+                        <br><span class="type-badge type-esn">Entreprise</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-hello-works">Hello Works</span>
+                    </td>
+                    <td>Paris</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-03</span>
+                                Réponse à une offre - Développeur Vue.js PHP H/F
+                            </div>
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Confirmation de lecture du CV
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="Docaposte">
+                    <td>
+                        <a href="#" class="company-link">Docaposte</a>
+                        <br><span class="type-badge type-esn">Entreprise</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-hello-works">Hello Works</span>
+                    </td>
+                    <td>Sotteville-lès-Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Réponse à une offre - Développeur Fullstack H/F
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="Effektiv">
+                    <td>
+                        <a href="#" class="company-link">Effektiv</a>
+                        <br><span class="type-badge type-esn">Entreprise</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-hello-works">Hello Works</span>
+                    </td>
+                    <td>Paris</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Réponse à une offre - Lead Développeur - PHP - Symfony - Laboratoire IT - Strasbourg H/F
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status todo">TODO</span></td>
+                </tr>
+
+                <tr data-company="Octopus IT">
+                    <td>
+                        <a href="#" class="company-link">Octopus IT</a>
+                        <br><span class="type-badge type-agency">Cabinet de recrutement</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge origin-hello-works">Hello Works</span>
+                    </td>
+                    <td>Paris</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Réponse à l'offre - Développeur PHP - Symfony - Plateforme de Streaming Séries Films Jeux Vidéos H/F
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+
+                <tr data-company="Sopra Steria">
+                    <td>
+                        <a href="#" class="company-link">Sopra Steria</a>
+                        <br><span class="type-badge type-esn">ESN</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge">Spontanée</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">2025-10-06</span>
+                                Candidature spontanée
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status waiting">WAITING</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <button class="add-new" onclick="addNewCompany()" title="Ajouter une nouvelle entreprise">+</button>
+    
+    <script>
+        // Fonction de filtrage
+        function filterTable() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const originFilter = document.getElementById('originFilter').value;
+            const table = document.getElementById('jobTable');
+            const rows = table.getElementsByTagName('tr');
+            
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const cells = row.getElementsByTagName('td');
+                let showRow = true;
+                
+                // Filtrer par statut (maintenant colonne 4)
+                if (statusFilter && cells[4].textContent.trim() !== statusFilter) {
+                    showRow = false;
+                }
+                
+                // Filtrer par type
+                if (typeFilter && !cells[0].textContent.includes(typeFilter)) {
+                    showRow = false;
+                }
+                
+                // Filtrer par origine
+                if (originFilter && !cells[1].textContent.includes(originFilter)) {
+                    showRow = false;
+                }
+                
+                row.style.display = showRow ? '' : 'none';
+            }
+        }
+        
+        // Ajouter les événements de filtrage
+        document.getElementById('statusFilter').addEventListener('change', filterTable);
+        document.getElementById('typeFilter').addEventListener('change', filterTable);
+        document.getElementById('originFilter').addEventListener('change', filterTable);
+        
+        // Fonction pour ajouter une nouvelle entreprise
+        function addNewCompany() {
+            const newCompany = prompt("Nom de l'entreprise:");
+            const newType = prompt("Type (ESN/Agence Web/Entreprise):");
+            const newOrigin = prompt("Origine (Indeed/LinkedIn/APEC/France Travail/Hello Works/Spontanée):");
+            const newStatus = prompt("Statut (WAITING/CLOSED/IN PROGRESS/TODO):");
+            
+            if (newCompany) {
+                const table = document.getElementById('jobTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+                newRow.setAttribute('data-company', newCompany);
+                
+                newRow.innerHTML = `
+                    <td>
+                        <a href="#" class="company-link">${newCompany}</a>
+                        <br><span class="type-badge ${getTypeClass(newType)}">${newType || ''}</span>
+                    </td>
+                    <td>
+                        <span class="origin-badge ${getOriginClass(newOrigin)}">${newOrigin || '-'}</span>
+                    </td>
+                    <td>Rouen</td>
+                    <td>
+                        <div class="interactions">
+                            <div class="interaction">
+                                <span class="interaction-date">-</span>
+                                À compléter
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="status ${(newStatus || 'TODO').toLowerCase().replace(' ', '-')}">${newStatus || 'TODO'}</span></td>
+                `;
+                
+                updateStats();
+            }
+        }
+        
+        function getTypeClass(type) {
+            if (type === 'ESN') return 'type-esn';
+            if (type === 'Agence Web') return 'type-agency';
+            return 'type-esn';
+        }
+        
+        function getOriginClass(origin) {
+            if (origin === 'Indeed') return 'origin-indeed';
+            if (origin === 'LinkedIn') return 'origin-linkedin';
+            if (origin === 'APEC') return 'origin-apec';
+            if (origin === 'France Travail') return 'origin-pole-emploi';
+            if (origin === 'Hello Works') return 'origin-hello-works';
+            return '';
+        }
+        
+        
+        // Fonction pour mettre à jour les statistiques
+        function updateStats() {
+            const rows = document.querySelectorAll('#jobTable tbody tr');
+            let total = 0, closed = 0, inProgress = 0, todo = 0, waiting = 0;
+            
+            rows.forEach(row => {
+                if (row.style.display !== 'none') {
+                    total++;
+                    const status = row.querySelector('.status').textContent.trim();
+                    if (status === 'CLOSED') closed++;
+                    else if (status === 'IN PROGRESS') inProgress++;
+                    else if (status === 'TODO') todo++;
+                    else if (status === 'WAITING') waiting++;
+                }
+            });
+            
+            document.querySelector('.stat-number').textContent = total.toString();
+            document.querySelectorAll('.stat-number')[1].textContent = closed.toString();
+            document.querySelectorAll('.stat-number')[2].textContent = inProgress.toString();
+            document.querySelectorAll('.stat-number')[3].textContent = todo.toString();
+        }
+        
+        
+        // Initialiser les statistiques
+        updateStats();
+    </script>
+</body>
+</html>

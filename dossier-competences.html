@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier de Compétences - David BENARD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .skill-list {
+            list-style-type: disc;
+            list-style-position: inside;
+            margin-left: 0;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            color: #333;
+        }
+
+        .skill-list li::marker {
+            color: #667eea;
+        }
+
+        .experience {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .duration {
+            color: #666;
+            font-style: italic;
+        }
+
+        .role {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .achievements li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .achievements li:before {
+            content: "\2022";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .achievements .sub-item {
+            margin-left: 20px;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .achievements .sub-item:before {
+            content: "\2192";
+        }
+
+        .technologies {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tech-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .personal-project {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .personal-project h4 {
+            margin-bottom: 15px;
+        }
+
+        .personal-project a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .education {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: none;
+            }
+            
+            .header {
+                padding: 20px 30px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+                margin-bottom: 6px;
+            }
+            
+            .contact-info {
+                margin-top: 10px;
+            }
+            
+            .content {
+                padding: 20px 30px;
+            }
+            
+            .section {
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+            
+            .section h2 {
+                font-size: 1.4em;
+                margin-bottom: 10px;
+                padding-bottom: 5px;
+            }
+            
+            .skills-grid {
+                gap: 15px;
+                margin-top: 10px;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .skill-category {
+                padding: 12px;
+                break-inside: avoid;
+            }
+            
+            .skill-category h4 {
+                margin-bottom: 8px;
+                font-size: 1em;
+            }
+            
+            .skill-list li {
+                padding: 2px 0;
+            }
+            
+            .experience {
+                page-break-inside: avoid;
+                padding: 18px;
+                margin-bottom: 18px;
+            }
+            
+            .education {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>David BENARD</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>magicbart@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>06 23 60 55 36</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>76300 Sotteville-lès-Rouen</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="section">
+                <h2>Formation et Diplômes</h2>
+                <div class="education">
+                    <strong>Maîtrise Informatique</strong> – Université de ROUEN<br>
+                    <strong>Bac S Maths</strong>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Compétences techniques et fonctionnelles</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Langages</h4>
+                        <ul class="skill-list">
+                            <li>PHP</li>
+                            <li>HTML</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>TypeScript</li>
+                            <li>PL/SQL</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Frameworks</h4>
+                        <ul class="skill-list">
+                            <li>Symfony, Laravel, API Platform</li>
+                            <li>VueJs</li>
+                            <li>Flutter</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Autres outils</h4>
+                        <ul class="skill-list">
+                            <li>Git, composer, npm</li>
+                            <li>PhpStorm, Filezilla, Bruno</li>
+                            <li>Chrome, Firefox</li>
+                            <li>WSL, Ubuntu</li>
+                            <li>Docker</li>
+                            <li>Apache</li>
+                            <li>RabbitMQ</li>
+                            <li>Claude Code</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Base de données</h4>
+                        <ul class="skill-list">
+                            <li>MySQL, Oracle, Sybase, SQL Server</li>
+                            <li>Redis</li>
+                            <li>Modélisation</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Tests</h4>
+                        <ul class="skill-list">
+                            <li>PHPUnit</li>
+                            <li>Tests unitaires</li>
+                            <li>Tests d'intégration</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>DevOps/Infrastructure</h4>
+                        <ul class="skill-list">
+                            <li>OVH</li>
+                            <li>CI/CD</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Méthodologies</h4>
+                        <ul class="skill-list">
+                            <li>Cycle en V</li>
+                            <li>Agile</li>
+                            <li>Code Review</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Expériences professionnelles principales</h2>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Webaxys</span>
+                        <span class="duration">2 ans</span>
+                    </div>
+                    <div class="role">Lead Développeur</div>
+                    <ul class="achievements">
+                        <li>Mise en place de bonnes pratiques, GitLab CI</li>
+                        <li>Développement de plugins Supportpal</li>
+                        <li>Développement d'un outil d'éligibilité</li>
+                        <li>Développement d'un outil de téléphonie via les solutions Connectiva (VoIP) et Cfast (Facturation)</li>
+                        <li>TMA sur les applications</li>
+                        <li>Mise en place de tests unitaires avec PHPUnit</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> PHP 8.3, Symfony 6.4, Laravel 10, Vue 3, API Platform, WSL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Eres</span>
+                        <span class="duration">2 ans</span>
+                    </div>
+                    <div class="role">Backend Développeur</div>
+                    <ul class="achievements">
+                        <li>Conception et développement d'applications sur l'épargne salariale et l'assurance vie</li>
+                        <li>Développement des API et batchs</li>
+                        <li>TMA sur les applications</li>
+                        <li>Mise en place de tests unitaires avec PHPUnit</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> PHP 7.4, Symfony 5.4, MySQL, React, WSL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Powernext</span>
+                        <span class="duration">4 ans</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>Conception et développement de l'application Registre des GO (Garanties d'origine)
+                            <div class="sub-item">Webservice SOAP pour échanger avec le HUB européen</div>
+                            <div class="sub-item">Portail Web pour émettre, utiliser, échanger des GOs</div>
+                            <div class="sub-item">TMA</div>
+                        </li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> PHP, MkFramework, SQL Server, PL/SQL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Enedis</span>
+                        <span class="duration">1 an</span>
+                    </div>
+                    <div class="role">Lead développeur</div>
+                    <ul class="achievements">
+                        <li>Développement des évolutions sur l'application Portail Petit Producteur</li>
+                        <li>Support fonctionnel et technique sur les applications PHP</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> Zend 1 et 2, jQuery, SVN, Struts, Oracle, MySQL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Coyote System</span>
+                        <span class="duration">6 mois</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>TMA sur les applications Web, CRM, SAV</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> Zend 1, jQuery, SVN, Compiere, Webservices REST, CMS
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">ERDF</span>
+                        <span class="duration">3 ans et 6 mois</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>Conception et développement de l'application Escrime qui permet aux régions de gérer la comptabilité</li>
+                        <li>Développement sur les applications ORFI et OSPROV qui traitent les branchements provisoires</li>
+                        <li>Développement sur l'application Mercure qui permet aux régions d'envoyer un SMS en cas d'intempérie</li>
+                        <li>Rédaction de documents techniques</li>
+                        <li>Mise en production</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> Zend 1 et 2, jQuery, SVN, MySQL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">AvendreAlouer.fr</span>
+                        <span class="duration">6 mois</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>Développement des évolutions sur le site</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> PHP, jQuery, SVN
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Conseil Supérieur de l'ordre des experts comptables</span>
+                        <span class="duration">1 an</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>Conception et développement d'un module de qualité
+                            <div class="sub-item">Formulaire dynamique</div>
+                            <div class="sub-item">Génération de fichiers Excel</div>
+                            <div class="sub-item">Mode hors ligne via HTML5</div>
+                        </li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> Zend 1, Doctrine 2, jQuery, ExtJS, SQL Server, GIT
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Edifret</span>
+                        <span class="duration">3 ans</span>
+                    </div>
+                    <div class="role">Développeur / Chef de projet adjoint</div>
+                    <ul class="achievements">
+                        <li>Conception et développement d'applications de géolocalisation de wagon
+                            <div class="sub-item">Via coordonnées GPS (Temps Réel)</div>
+                            <div class="sub-item">Via RFID, entrée et sortie de gare</div>
+                        </li>
+                        <li>Conception et développement d'une application de gestion de mise en production</li>
+                        <li>Rédaction de documents techniques et fonctionnels</li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> HTML, PHP5, JavaScript, Oracle, Sybase, Perl, CVS, PL/SQL
+                    </div>
+                </div>
+
+                <div class="experience">
+                    <div class="experience-header">
+                        <span class="company">Neuf Cegetel</span>
+                        <span class="duration">2 ans</span>
+                    </div>
+                    <div class="role">Développeur</div>
+                    <ul class="achievements">
+                        <li>Conception et développement d'une application logistique
+                            <div class="sub-item">Application PHP pour l'administration du référentiel logistique</div>
+                            <div class="sub-item">Programmes (Java, Perl, PL/SQL) pour l'export des données</div>
+                            <div class="sub-item">TMA</div>
+                        </li>
+                    </ul>
+                    <div class="technologies">
+                        <span class="tech-label">Technologies :</span> HTML, PHP4, JavaScript, Java, Oracle, Perl, Tomcat, CVS, SVN, PL/SQL
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Expériences personnelles</h2>
+                
+                <div class="personal-project">
+                    <h4>Webmaster, Développeur - <a href="https://www.videogamesrecords.net" target="_blank">Video Games Records</a> (depuis 2004)</h4>
+                    <ul class="achievements">
+                        <li>Développement d'un site sur les records de jeux vidéos</li>
+                        <li>Modélisation de la BDD</li>
+                        <li>Administration de 2 VPS chez OVH (recette et prod)</li>
+                        <li>Qualité de code : phpcs, phpstan, scrutinizer</li>
+                        <li>Drone CI pour la livraison</li>
+                        <li>Utilisation de Claude Code pour l'assistance au développement</li>
+                    </ul>
+                    <div class="technologies" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);">
+                        <span class="tech-label" style="color: white;">Technologies :</span> Ubuntu, Apache, Symfony 7, API Platform, VueJS 3, TypeScript, Tailwind CSS, MySQL, PHP 8.4, GIT
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -58,6 +58,15 @@
         margin-bottom: 20px;
     }
 
+    .cv-contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        font-size: 0.95em;
+    }
+
     .cv-tech-badges {
         display: flex;
         justify-content: center;
@@ -321,8 +330,12 @@
     <div class="cv-wrapper">
         <header class="cv-header">
             <div class="cv-header-content">
-                <h1>Développeur WEB PHP</h1>
-                <p class="cv-subtitle">Certifié Zend Framework / PHP 5.3</p>
+                <h1>David BENARD</h1>
+                <p class="cv-subtitle">Développeur WEB PHP</p>
+                <div class="cv-contact-info">
+                    <span>david.benard@vgr-magicbart.com</span>
+                    <span>76300 Sotteville-lès-Rouen</span>
+                </div>
                 <div class="cv-tech-badges">
                     <span class="cv-tech-badge">Symfony 7</span>
                     <span class="cv-tech-badge">Vue.js</span>
@@ -338,28 +351,36 @@
                 <h2>Compétences Techniques</h2>
                 <div class="cv-skills-grid">
                     <div class="cv-skill-item">
-                        <div class="cv-skill-category">Framework</div>
-                        <div class="cv-skill-content">Symfony 7 + Api Platform, VueJs, Shadcn, Tailwind</div>
-                    </div>
-                    <div class="cv-skill-item">
                         <div class="cv-skill-category">Langages</div>
-                        <div class="cv-skill-content">PHP, HTML, CSS, JavaScript, Java, XML, PlSql</div>
+                        <div class="cv-skill-content">PHP, HTML, CSS3, JavaScript, TypeScript, PL/SQL</div>
                     </div>
                     <div class="cv-skill-item">
-                        <div class="cv-skill-category">Versionning</div>
-                        <div class="cv-skill-content">GIT</div>
+                        <div class="cv-skill-category">Frameworks</div>
+                        <div class="cv-skill-content">Symfony 7 + API Platform, VueJs, Laravel, Flutter, Shadcn, Tailwind</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Autres outils</div>
+                        <div class="cv-skill-content">Git, Composer, NPM, PhpStorm, FileZilla, Bruno, Docker, Apache, RabbitMQ, Claude Code</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Base de données</div>
+                        <div class="cv-skill-content">MySQL, Oracle, Sybase, SQL Server, Redis, Modélisation</div>
                     </div>
                     <div class="cv-skill-item">
                         <div class="cv-skill-category">Systèmes</div>
-                        <div class="cv-skill-content">Windows, Ubuntu</div>
+                        <div class="cv-skill-content">Windows, Ubuntu, WSL</div>
                     </div>
                     <div class="cv-skill-item">
-                        <div class="cv-skill-category">SGBD</div>
-                        <div class="cv-skill-content">MySQL, Oracle, Sybase, SQL Server</div>
+                        <div class="cv-skill-category">Tests</div>
+                        <div class="cv-skill-content">PHPUnit, Tests unitaires, Tests d'intégration</div>
                     </div>
                     <div class="cv-skill-item">
-                        <div class="cv-skill-category">Logiciels</div>
-                        <div class="cv-skill-content">PhpStorm, FileZilla, Dbeaver, Docker, Drone Ci, Bruno</div>
+                        <div class="cv-skill-category">DevOps/Infrastructure</div>
+                        <div class="cv-skill-content">OVH, CI/CD</div>
+                    </div>
+                    <div class="cv-skill-item">
+                        <div class="cv-skill-category">Méthodologies</div>
+                        <div class="cv-skill-content">Cycle en V, Agile, Code Review</div>
                     </div>
                 </div>
             </section>
@@ -374,11 +395,16 @@
                     </div>
                     <div class="cv-position">Lead Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> Symfony 6.4, Vue 3, MySQL
+                        <strong>Environnement technique :</strong> PHP 8.3, Symfony 6.4, Laravel 10, Vue 3, API Platform, WSL
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Support fonctionnel et technique sur les applications web</li>
+                            <li>Mise en place de bonnes pratiques, GitLab CI</li>
+                            <li>Développement de plugins Supportpal</li>
+                            <li>Développement d'un outil d'éligibilité</li>
+                            <li>Développement d'un outil de téléphonie via les solutions Connectiva (VoIP) et Cfast (Facturation)</li>
+                            <li>TMA sur les applications</li>
+                            <li>Mise en place de tests unitaires avec PHPUnit</li>
                         </ul>
                     </div>
                 </div>
@@ -388,13 +414,16 @@
                         <span class="cv-experience-date">11/21 - 08/23</span>
                         <span class="cv-company">Eres</span>
                     </div>
-                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-position">Backend Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> Symfony 5.4, React, MySQL
+                        <strong>Environnement technique :</strong> PHP 7.4, Symfony 5.4, MySQL, React, WSL
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Support fonctionnel et technique sur les applications web</li>
+                            <li>Conception et développement d'applications sur l'épargne salariale et l'assurance vie</li>
+                            <li>Développement des API et batchs</li>
+                            <li>TMA sur les applications</li>
+                            <li>Mise en place de tests unitaires avec PHPUnit</li>
                         </ul>
                     </div>
                 </div>
@@ -404,14 +433,16 @@
                         <span class="cv-experience-date">01/18 - 10/21</span>
                         <span class="cv-company">Powernext</span>
                     </div>
-                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-position">Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> MKframework, SqlServer, jQuery, PlSql
+                        <strong>Environnement technique :</strong> PHP, MkFramework, SQL Server, PL/SQL
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Reprise de l'application Registre des Gos</li>
-                            <li>Support fonctionnel et technique</li>
+                            <li>Conception et développement de l'application Registre des GO (Garanties d'origine)</li>
+                            <li>Webservice SOAP pour échanger avec le HUB européen</li>
+                            <li>Portail Web pour émettre, utiliser, échanger des GOs</li>
+                            <li>TMA</li>
                         </ul>
                     </div>
                 </div>
@@ -423,11 +454,11 @@
                     </div>
                     <div class="cv-position">Lead Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> ZF1, ZF2, jQuery, SVN, Java, Struts, Oracle
+                        <strong>Environnement technique :</strong> Zend 1 et 2, jQuery, SVN, Struts, Oracle, MySQL
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Reprise de l'application PPP (Java, Struts, Oracle)</li>
+                            <li>Développement des évolutions sur l'application Portail Petit Producteur</li>
                             <li>Support fonctionnel et technique sur les applications PHP</li>
                         </ul>
                     </div>
@@ -440,31 +471,86 @@
                     </div>
                     <div class="cv-position">Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> ZF1, jQuery, SVN, Compiere, Webservice REST, CMS
+                        <strong>Environnement technique :</strong> Zend 1, jQuery, SVN, Compiere, Webservices REST, CMS
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>TMA sur les applications WEB, CRM, SAV, Webservices</li>
+                            <li>TMA sur les applications Web, CRM, SAV</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="cv-experience-item">
                     <div class="cv-experience-header">
-                        <span class="cv-experience-date">12/12 - 04/16</span>
+                        <span class="cv-experience-date">12/12 - 05/16</span>
                         <span class="cv-company">ERDF</span>
                     </div>
-                    <div class="cv-position">Lead Développeur</div>
+                    <div class="cv-position">Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> ZF1, ZF2, jQuery, SVN
+                        <strong>Environnement technique :</strong> Zend 1 et 2, jQuery, SVN, MySQL
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Reprise des applications ORFI, OS-PROV, Mercure au national</li>
-                            <li>Développement des évolutions et correction des anomalies</li>
+                            <li>Conception et développement de l'application Escrime qui permet aux régions de gérer la comptabilité</li>
+                            <li>Développement sur les applications ORFI et OSPROV qui traitent les branchements provisoires</li>
+                            <li>Développement sur l'application Mercure qui permet aux régions d'envoyer un SMS en cas d'intempérie</li>
                             <li>Rédaction de documents techniques</li>
-                            <li>Développement application Escrime via ZF2 et modélisation BDD</li>
-                            <li>Responsable des mises en production</li>
+                            <li>Mise en production</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">06/12 - 11/12</span>
+                        <span class="cv-company">AvendreAlouer.fr</span>
+                    </div>
+                    <div class="cv-position">Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> PHP, jQuery, SVN
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Développement des évolutions sur le site</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">04/11 - 05/12</span>
+                        <span class="cv-company">Conseil Supérieur de l'ordre des experts comptables</span>
+                    </div>
+                    <div class="cv-position">Développeur</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> Zend 1, Doctrine 2, jQuery, ExtJS, SQL Server, GIT
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Conception et développement d'un module de qualité</li>
+                            <li>Formulaire dynamique</li>
+                            <li>Génération de fichiers Excel</li>
+                            <li>Mode hors ligne via HTML5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-experience-item">
+                    <div class="cv-experience-header">
+                        <span class="cv-experience-date">08/08 - 03/11</span>
+                        <span class="cv-company">Edifret</span>
+                    </div>
+                    <div class="cv-position">Développeur / Chef de projet adjoint</div>
+                    <div class="cv-tech-env">
+                        <strong>Environnement technique :</strong> HTML, PHP5, JavaScript, Oracle, Sybase, Perl, CVS, PL/SQL
+                    </div>
+                    <div class="cv-achievements">
+                        <ul>
+                            <li>Conception et développement d'applications de géolocalisation de wagon</li>
+                            <li>Via coordonnées GPS (Temps Réel)</li>
+                            <li>Via RFID, entrée et sortie de gare</li>
+                            <li>Conception et développement d'une application de gestion de mise en production</li>
+                            <li>Rédaction de documents techniques et fonctionnels</li>
                         </ul>
                     </div>
                 </div>
@@ -494,20 +580,21 @@
 
                 <div class="cv-experience-item cv-personal-project">
                     <div class="cv-experience-header">
-                        <span class="cv-experience-date">06/04 - Présent</span>
+                        <span class="cv-experience-date">depuis 2004</span>
                         <span class="cv-company">Video Games Records</span>
                     </div>
-                    <div class="cv-position">Webmaster & Lead Developer</div>
+                    <div class="cv-position">Webmaster & Développeur</div>
                     <div class="cv-tech-env">
-                        <strong>Environnement technique :</strong> Symfony 7, VueJs 3, MySQL, Apache, Ubuntu, Git
+                        <strong>Environnement technique :</strong> Ubuntu, Apache, Symfony 7, API Platform, VueJS 3, TypeScript, Tailwind CSS, MySQL, PHP 8.4, GIT
                     </div>
                     <div class="cv-achievements">
                         <ul>
-                            <li>Développement complet d'un site de records de jeux vidéos</li>
-                            <li>Architecture moderne : Symfony 6.4 + API Platform + VueJs 3</li>
-                            <li>Modélisation et optimisation de la base de données</li>
-                            <li>Administration de 2 VPS chez OVH</li>
-                            <li>Gestion complète du projet depuis 20 ans</li>
+                            <li>Développement d'un site sur les records de jeux vidéos</li>
+                            <li>Modélisation de la BDD</li>
+                            <li>Administration de 2 VPS chez OVH (recette et prod)</li>
+                            <li>Qualité de code : phpcs, phpstan, scrutinizer</li>
+                            <li>Drone CI pour la livraison</li>
+                            <li>Utilisation de Claude Code pour l'assistance au développement</li>
                         </ul>
                     </div>
                 </div>

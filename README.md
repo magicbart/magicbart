@@ -65,11 +65,10 @@ Application de gestion des matchs de baby-foot pour les étudiants de l'INSA ave
 
 ![GitHub Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=magicbart&theme=react-dark)
 
-## 🎯 Objectifs 2025
+## 🎯 Objectifs 2026
 
-- [x] Apprendre Flutter
-- [x] Créer un projet personnel avec Flutter
-- [x] Refonte de VGR en vue3 + shadcn + tailwind
+- [x] Consolider le projet Video Games Records
+- [x] Skills IA
 
 
 ## 🤝 Restons en contact

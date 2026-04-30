@@ -41,39 +41,25 @@ Développeur passionné basé à Rouen, spécialisé en développement web full-
 ## 🔥 Projets
 
 ### [Video Games Records](https://github.com/video-games-records)
-Site web sur les records de jeux videos. Technologies utilisées : Vue.js, Symfony, API Platform
-- ⭐ API REST complète avec Symfony
-- ⭐ Interface utilisateur moderne avec Vue.js
+Plateforme communautaire dédiée aux records de jeux vidéo. Un projet que je maintiens depuis plus de 20 ans, devenu une référence pour documenter et partager les exploits gaming de la communauté francophone.
+- ⭐ [vgr-sf](https://github.com/video-games-records/vgr-sf) - Application Symfony centralisant le site, l'API et l'administration pour la gestion des records, joueurs et contenus.
+- ⭐ [youtube-website](https://github.com/video-games-records/youtube-website) - Interface YouTube officielle pour découvrir et parcourir les contenus vidéo de la plateforme.
+- ⭐ [serie-website](https://github.com/video-games-records/serie-website) - Application Nuxt 4 multi-séries avec thèmes dynamiques par sous-domaine (Mario Kart, Forza, TrackMania…).
 
-### [vue-shadcn-template](https://github.com/projet-normandie/vue-shadcn-template)
-Skeleton front : Vue3, TypeScript, Tailwind CSS
-- ⭐ Application web responsive
-- ⭐ Architecture moderne et maintenable
+### [World Crash Ranking](https://github.com/world-crash-rankings/wcr-sf)
+Application web de gestion des classements du mode Crash de Burnout 2. Suivi des joueurs, scores et statistiques avec 4 types de classements (Total, Position moyenne, Étoiles, Pourcentage), galeries vidéo par zone et notifications Discord.
+- ⭐ [wcr-sf](https://github.com/world-crash-rankings/wcr-sf) - Application Symfony de gestion des classements, profils joueurs, scores et galeries vidéo.
 
-### [symfony-skeleton](https://github.com/projet-normandie/symfony-skeleton)
-Skeleton back : Symfony 7.2, Api Platform 4, Sonata Admin
-- ⭐ API REST
-- ⭐ Architecture moderne et maintenable  
+### [FlowBoard](https://github.com/projet-normandie/flow-board)
+Application de gestion de tâches style Kanban permettant d'organiser le travail en projets, boards et colonnes. Glisser-déposer de cartes, priorités, étiquettes, assignation, mode sombre et audit complet des modifications.
+- ⭐ [flow-board](https://github.com/projet-normandie/flow-board) - Kanban multi-projets avec drag & drop, gestion des rôles, archivage soft-delete et suivi d'audit des entités.
 
-### [user-bundle](https://github.com/projet-normandie/user-bundle)
-Bundle Symfony pour la gestion des utilisateurs
-- ⭐ Gestion complète des utilisateurs
-- ⭐ Intégration avec Symfony
+### [BAB INSA](https://github.com/bab-insa)
+Application de gestion des matchs de baby-foot pour les étudiants de l'INSA avec système de classement ELO pour suivre les performances des joueurs.
+- ⭐ [api](https://github.com/bab-insa/api) - API backend développée avec Go pour gérer les matchs et le système ELO.
+- ⭐ [website](https://github.com/bab-insa/website) - Interface utilisateur pour visualiser les classements et organiser les matchs de baby-foot.
 
-### [message-bundle](https://github.com/projet-normandie/message-bundle)
-Bundle Symfony pour la messagerie
-- ⭐ Système de messagerie interne
-- ⭐ Interface d'administration
 
-### [forum-bundle](https://github.com/projet-normandie/forum-bundle)
-Bundle Symfony pour les forums
-- ⭐ Gestion de forums et discussions
-- ⭐ Modération et administration
-
-### [article-bundle](https://github.com/projet-normandie/article-bundle)
-Bundle Symfony pour la gestion d'articles
-- ⭐ Création et gestion d'articles
-- ⭐ Système de publication
 
 ## 📈 Contribution
 
